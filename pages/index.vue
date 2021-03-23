@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto flex justify-center items-center h-screen">
-    <img src="../assets/image/logo.jpg" alt="" />
+    YOCHU JIJI DAE
   </div>
 </template>
 
