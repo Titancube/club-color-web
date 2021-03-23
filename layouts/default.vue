@@ -4,9 +4,9 @@
   >
     <Navigation />
     <transition name="fade" appear>
-      <Nuxt class="pt-20" />
+      <Nuxt class="md:pt-20" />
     </transition>
-    <CustomFooter />
+    <CustomMyFooter />
   </div>
 </template>
 
