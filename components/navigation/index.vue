@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full bg-transparent fixed">
+  <div
+    class="w-full z-30 sticky top-0 bg-gradient-to-b from-purple-900 via-purple-900 to-transparent md:bg-transparent md:fixed"
+  >
     <ul class="list-none w-full flex h-full justify-center items-center p-4">
       <li
         v-for="menu in menus"
