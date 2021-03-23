@@ -1,20 +1,17 @@
 <template>
   <div>
-    <Nuxt />
+    <transition name="fade" appear>
+      <Nuxt />
+    </transition>
   </div>
 </template>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@100;300&display=swap"); /* Roboto */
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Montserrat", "Raleway", "Open Sans", "NanumSquare", sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -22,6 +19,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 *,
@@ -31,32 +29,29 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.font-m {
+  font-family: "Montserrat", sans-serif;
+}
+.font-r {
+  font-family: "Raleway", sans-serif;
+}
+.font-s {
+  font-family: "Open Sans", sans-serif;
+}
+.font-n {
+  font-family: "NanumSquare", sans-serif;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.invert {
+  filter: invert(100%);
 }
 </style>
