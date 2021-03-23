@@ -1,30 +1,21 @@
 <template>
   <div
-    class="container min-h-screen flex flex-wrap justify-evenly items-center p-12"
+    class="container min-h-screen flex flex-wrap justify-evenly items-center p-12 mx-auto"
   >
-    <div class="p-4" data-aos="fade-left">
+    <div
+      v-for="crew in crews"
+      :key="crew.id"
+      class="p-4"
+      data-aos="fade-left"
+      :data-aos-delay="crew.delay"
+      @click="moveTo(crew.id)"
+    >
       <img
         class="w-64 rounded-full shadow-2xl cursor-pointer hover:w-72 transform hover:rotate-12 duration-150"
-        src="../../assets/image/crew_sqr_chuyo.png"
+        :src="crew.imageUrl"
         alt=""
       />
-      <h1 class="w-full text-3xl font-bold text-center p-4">CHUYO</h1>
-    </div>
-    <div class="p-4" data-aos="fade-left" data-aos-delay="100">
-      <img
-        class="w-64 rounded-full shadow-2xl cursor-pointer hover:w-72 transform hover:rotate-12 duration-150"
-        src="../../assets/image/crew_sqr_kerorong.png"
-        alt=""
-      />
-      <h1 class="w-full text-3xl font-bold text-center p-4">KERORONG</h1>
-    </div>
-    <div class="p-4" data-aos="fade-left" data-aos-delay="200">
-      <img
-        class="w-64 rounded-full shadow-2xl cursor-pointer hover:w-72 transform hover:rotate-12 duration-150"
-        src="../../assets/image/crew_sqr_entee.png"
-        alt=""
-      />
-      <h1 class="w-full text-3xl font-bold text-center p-4">ENTEE</h1>
+      <h1 class="w-full text-3xl font-bold text-center p-4">{{ crew.name }}</h1>
     </div>
   </div>
 </template>
@@ -32,9 +23,38 @@
 <script lang='ts'>
 import { Component, Vue, Prop } from "nuxt-property-decorator";
 
-@Component
-export default class index extends Vue {}
-</script>
+interface Crew {
+  id: number;
+  name: string;
+  imageUrl: string;
+  delay: number;
+}
 
-<style scoped lang='postcss'>
-</style>
+@Component
+export default class index extends Vue {
+  crews: Crew[] = [
+    {
+      id: 0,
+      name: "CHUYO",
+      imageUrl: "/description/crew_sqr_chuyo.png",
+      delay: 0,
+    },
+    {
+      id: 1,
+      name: "KERORONG",
+      imageUrl: "/description/crew_sqr_kerorong.png",
+      delay: 100,
+    },
+    {
+      id: 2,
+      name: "ENTEE",
+      imageUrl: "/description/crew_sqr_entee.png",
+      delay: 200,
+    },
+  ];
+
+  moveTo(n: number): void {
+    this.$router.push("/crew/" + n);
+  }
+}
+</script>
