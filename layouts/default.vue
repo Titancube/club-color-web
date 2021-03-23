@@ -6,6 +6,7 @@
     <transition name="fade" appear>
       <Nuxt class="pt-20" />
     </transition>
+    <CustomFooter />
   </div>
 </template>
 
