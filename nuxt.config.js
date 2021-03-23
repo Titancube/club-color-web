@@ -70,6 +70,12 @@ export default {
     jit: true
   },
 
+  router: {
+    scrollBehavior(to, from, savedPosition) {
+      return { x: 0, y: 0 };
+    }
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}
 };
