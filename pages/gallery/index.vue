@@ -1,14 +1,27 @@
 <template>
-  <div class="container mx-auto flex justify-center items-center h-screen">
-    사동 마이너 갤러리
+  <div
+    class="container md:pt-24 mx-auto flex flex-wrap justify-start items-start min-h-screen"
+  >
+    <div
+      v-for="i in (items = 200)"
+      :key="i"
+      class="w-1/6 h-auto ring-1 ring-black transform hover:scale-110 relative hover:z-10 duration-75 cursor-pointer"
+      @click="moveTo(i)"
+    >
+      <img src="https://via.placeholder.com/300" alt="" />
+    </div>
   </div>
 </template>
 
 <script lang='ts'>
-import { Component, Vue, Prop } from "nuxt-property-decorator";
+import { Component, Vue } from "nuxt-property-decorator";
 
 @Component
-export default class index extends Vue {}
+export default class index extends Vue {
+  moveTo(n: number, url: string): void {
+    this.$router.push("/gallery/" + n);
+  }
+}
 </script>
 
 <style scoped lang='postcss'>
