@@ -25,7 +25,7 @@ export default {
       { hid: "og:title", name: "og:title", content: "Club Color" },
       { hid: "og:type", name: "og:type", content: "website" },
       { hid: "og:url", name: "og:url", content: "https://clubcolor.live" },
-      { hid: "og:image", name: "og:image", content: "/seo.png" }
+      { hid: "og:image", name: "og:image", content: "/banner.jpg" }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
