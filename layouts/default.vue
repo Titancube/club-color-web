@@ -1,7 +1,10 @@
 <template>
-  <div>
+  <div
+    class="bg-gradient-to-t from-black to-purple-900 text-gray-300 min-h-screen bg-fixed mx-auto"
+  >
+    <Navigation />
     <transition name="fade" appear>
-      <Nuxt />
+      <Nuxt class="pt-20" />
     </transition>
   </div>
 </template>

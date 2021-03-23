@@ -1,7 +1,5 @@
 <template>
-  <div class="container mx-auto flex justify-center items-center h-screen">
-    <img src="../assets/image/logo.jpg" alt="" />
-  </div>
+  <div></div>
 </template>
 
 <script lang='ts'>
@@ -11,5 +9,5 @@ import { Component, Vue, Prop } from "nuxt-property-decorator";
 export default class index extends Vue {}
 </script>
 
-<style>
+<style scoped lang='postcss'>
 </style>
