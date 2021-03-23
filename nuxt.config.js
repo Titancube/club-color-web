@@ -4,11 +4,28 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "clubcolor",
+    title: "Club Color",
     meta: [
       { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" }
+      {
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+      },
+      {
+        hid: "description",
+        name: "description",
+        content: "Club Color"
+      },
+      {
+        hid: "og:description",
+        name: "og:description",
+        content: "Club Color"
+      },
+      { hid: "og:title", name: "og:title", content: "Club Color" },
+      { hid: "og:type", name: "og:type", content: "website" },
+      { hid: "og:url", name: "og:url", content: "https://clubcolor.live" },
+      { hid: "og:image", name: "og:image", content: "/seo.png" }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
@@ -27,7 +44,8 @@ export default {
     // https://go.nuxtjs.dev/typescript
     "@nuxt/typescript-build",
     // https://go.nuxtjs.dev/tailwindcss
-    "@nuxtjs/tailwindcss"
+    "@nuxtjs/tailwindcss",
+    "nuxt-typed-vuex"
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
