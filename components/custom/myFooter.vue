@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full text-xs mx-auto text-center text-gray-700 p-2">
+  <div class="w-full text-xs mx-auto text-center text-gray-700 p-2">
     <p>
       Website made by
       <a
@@ -20,14 +20,14 @@
         >CLUB COLOR</a
       >
     </p>
-  </footer>
+  </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from "nuxt-property-decorator";
 
 @Component
-export default class footer extends Vue {}
+export default class MyFooter extends Vue {}
 </script>
 
 <style scoped lang='postcss'>
