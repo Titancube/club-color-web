@@ -11,7 +11,7 @@
       @click="moveTo(crew.id)"
     >
       <img
-        class="w-64 rounded-full shadow-2xl cursor-pointer hover:w-72 transform hover:rotate-12 duration-150"
+        class="w-64 rounded-full shadow-2xl cursor-pointer hover:scale-110 transform hover:rotate-12 duration-150"
         :src="crew.imageUrl"
         alt=""
       />
@@ -21,7 +21,7 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue, Prop } from "nuxt-property-decorator";
+import { Component, Vue } from "nuxt-property-decorator";
 
 interface Crew {
   id: number;

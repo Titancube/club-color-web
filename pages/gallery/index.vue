@@ -22,7 +22,7 @@ import { Component, Vue } from "nuxt-property-decorator";
 
 @Component
 export default class index extends Vue {
-  moveTo(n: number, url: string): void {
+  moveTo(n: number): void {
     this.$router.push("/gallery/" + n);
   }
 }
