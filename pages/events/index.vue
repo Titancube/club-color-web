@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div
+    class="container mx-auto flex justify-center items-center h-screen"
+  ></div>
 </template>
 
 <script lang='ts'>

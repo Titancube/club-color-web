@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div class="container mx-auto flex justify-center items-center h-screen">
+    사동 마이너 갤러리
+  </div>
 </template>
 
 <script lang='ts'>
