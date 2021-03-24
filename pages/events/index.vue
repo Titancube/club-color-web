@@ -26,28 +26,62 @@
         </button></a
       >
     </div>
-    <CardEvent v-for="i in (items = 2)" :key="i" @click.native="moveTo(i)" />
+    <div v-if="!eventsToday"></div>
+    <CardEvent
+      v-else
+      v-for="et in eventsToday"
+      :key="et.id"
+      :title="et.title"
+      :location="et.location"
+      :poster="et.poster"
+      :startsAt="et.startsAt"
+      @click.native="moveTo(et.id)"
+    />
+
     <h1 class="w-full text-center md:text-left text-3xl font-bold mt-12 my-4">
       Upcoming Events
     </h1>
-    <CardEvent v-for="j in (items = 6)" :key="j" @click.native="moveTo(j)" />
+    <div v-if="!eventsUpcoming"></div>
+    <CardEvent
+      v-else
+      v-for="eu in eventsUpcoming"
+      :key="eu.id"
+      :title="eu.title"
+      :location="eu.location"
+      :poster="eu.poster"
+      :startsAt="eu.startsAt"
+      @click.native="moveTo(eu.id)"
+    />
+
     <h1 class="w-full text-center md:text-left text-3xl font-bold mt-12 my-4">
       Archives
     </h1>
-    <CardEvent v-for="k in (items = 15)" :key="k" @click.native="moveTo(k)" />
+    <div v-if="!eventsPast"></div>
+    <CardEvent
+      v-else
+      v-for="ep in eventsPast"
+      :key="ep.id"
+      :title="ep.title"
+      :location="ep.location"
+      :poster="ep.poster"
+      :startsAt="ep.startsAt"
+      @click.native="moveTo(ep.id)"
+    />
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from "nuxt-property-decorator";
+import formatDistanceToNowStrict from "date-fns/formatDistanceToNowStrict";
+import { ko } from "date-fns/locale";
 
 interface Event {
+  id: string;
   title: string;
-  description: string;
-  entries: Array<string>;
   startsAt: Date;
   endsAt: Date;
   location: number;
+  poster: string;
 }
 
 @Component
@@ -56,12 +90,15 @@ export default class index extends Vue {
     "https://vrchat.com/home/launch?worldId=wrld_48cffdef-b2ec-42b2-9098-769fadca3cfa";
   currentWorld: string = "CLUB COLOR";
   events: Event[] = [];
+  eventsToday: Event[] = [];
+  eventsUpcoming: Event[] = [];
+  eventsPast: Event[] = [];
 
   mounted() {
-    this.getTodayEvents();
+    this.getEvents();
   }
 
-  whichClubToGo(n: number) {
+  whichClubToGo(n: number): void {
     switch (n) {
       default:
       case 0:
@@ -85,26 +122,54 @@ export default class index extends Vue {
   }
 
   // Get all events from DB
-  async getTodayEvents() {
+  async getEvents(): Promise<void> {
     const snapshot = await this.$fire.firestore.collection("Events").get();
     snapshot.forEach((v) => {
       this.events.push({
+        id: v.id,
         title: v.data().title,
-        description: v.data().description,
-        entries: v.data().entries,
-        startsAt: v.data().startsAt,
-        endsAt: v.data().endsAt,
+        startsAt: v.data().startsAt.toDate(),
+        endsAt: v.data().endsAt.toDate(),
         location: v.data().location,
+        poster: v.data().poster,
       });
     });
+
+    this.sortEvents();
+  }
+
+  sortEvents(): void {
+    const eventsUpcoming = this.events.filter(
+      (v) =>
+        parseInt(
+          formatDistanceToNowStrict(v.startsAt, {
+            addSuffix: false,
+            unit: "second",
+            locale: ko,
+          })
+        ) > 86400 && v.endsAt > new Date()
+    );
+    this.eventsUpcoming = eventsUpcoming;
+
+    const eventsPast = this.events.filter((v) => v.endsAt < new Date());
+    this.eventsPast = eventsPast;
+
+    const eventsToday = this.events.filter(
+      (v) =>
+        parseInt(
+          formatDistanceToNowStrict(v.startsAt, {
+            addSuffix: false,
+            unit: "second",
+            locale: ko,
+          })
+        ) < 86400 && v.endsAt > new Date()
+    );
+    this.eventsToday = eventsToday;
+    this.whichClubToGo(this.eventsToday[0].location);
   }
 
   moveTo(n: number): void {
     this.$router.push("/events/" + n);
-  }
-
-  get() {
-    //
   }
 }
 </script>
