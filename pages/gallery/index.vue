@@ -5,7 +5,7 @@
     <div
       v-for="i in (items = 200)"
       :key="i"
-      class="w-1/2 md:w-1/6 h-auto ring-1 ring-black transform hover:scale-110 relative hover:z-10 hover:shadow-2xl duration-75 cursor-pointer"
+      class="w-1/2 md:w-1/4 h-auto ring-1 ring-black transform hover:scale-110 relative hover:z-10 hover:shadow-2xl duration-75 cursor-pointer"
       @click="moveTo(i)"
     >
       <img

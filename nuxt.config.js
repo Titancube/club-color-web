@@ -45,6 +45,7 @@ export default {
     "@nuxt/typescript-build",
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
+    "@nuxtjs/firebase",
     "nuxt-typed-vuex"
   ],
 
@@ -68,6 +69,30 @@ export default {
 
   tailwindcss: {
     jit: true
+  },
+
+  firebase: {
+    config: {
+      apiKey: "AIzaSyDsE0bX5y0Hwb2fFqAyLr12z3eFvvm83jA",
+      authDomain: "clubcolor.firebaseapp.com",
+      projectId: "clubcolor",
+      storageBucket: "clubcolor.appspot.com",
+      messagingSenderId: "885157147325",
+      appId: "1:885157147325:web:737e912b71259bc98bfdd4",
+      measurementId: "G-Q42VGF5DQ0"
+    },
+    services: {
+      auth: {
+        persistence: "session", // default
+        initialize: {
+          onAuthStateChangedMutation: "ON_AUTH_STATE_CHANGED_MUTATION",
+          onAuthStateChangedAction: "onAuthStateChangedAction",
+          subscribeManually: false
+        },
+        ssr: false
+      },
+      firestore: true
+    }
   },
 
   router: {
