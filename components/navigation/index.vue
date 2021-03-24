@@ -33,14 +33,6 @@ export default class index extends Vue {
     { title: "CREW", url: "/crew" },
     { title: "EVENTS", url: "/events" },
   ];
-
-  mounted() {
-    this.tasd();
-  }
-
-  tasd() {
-    console.log(this.$route.fullPath);
-  }
 }
 </script>
 
