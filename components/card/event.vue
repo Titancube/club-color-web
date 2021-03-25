@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-5/6 md:w-1/5 mt-4 md:m-4 cursor-pointer ring-8"
+    class="relative w-5/6 md:w-1/5 mt-4 md:m-4 cursor-pointer ring-8 img-container"
     :class="
       location === 0
         ? 'ring-purple-500'
@@ -10,7 +10,7 @@
     "
   >
     <img
-      class="relative z-10 w-full max-h-80 object-cover"
+      class="absolute top-0 left-0 right-0 bottom-0 object-center w-full h-full object-cover"
       :src="poster"
       alt=""
     />
