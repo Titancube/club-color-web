@@ -15,12 +15,9 @@
       </div>
       <div>
         <p>
-          Event Starts at:
-          <span class="font-bold text-white">{{ event.startsAt }}</span>
-        </p>
-        <p>
-          Event Starts at:
-          <span class="font-bold text-white">{{ event.endsAt }}</span>
+          <span class="font-bold text-white"
+            >{{ event.startsAt }} - {{ event.endsAt }}</span
+          >
         </p>
       </div>
       <div>

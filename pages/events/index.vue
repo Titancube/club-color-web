@@ -43,6 +43,7 @@
     </h1>
     <div v-if="!eventsUpcoming"></div>
     <CardEvent
+      class="mb-4"
       v-else
       v-for="eu in eventsUpcoming"
       :key="eu.id"
@@ -58,6 +59,7 @@
     </h1>
     <div v-if="!eventsPast"></div>
     <CardEvent
+      class="mb-4"
       v-else
       v-for="ep in eventsPast"
       :key="ep.id"
@@ -124,6 +126,7 @@ export default class index extends Vue {
   // Get all events from DB
   async getEvents(): Promise<void> {
     const snapshot = await this.$fire.firestore.collection("Events").get();
+
     snapshot.forEach((v) => {
       this.events.push({
         id: v.id,
@@ -165,7 +168,9 @@ export default class index extends Vue {
         ) < 86400 && v.endsAt > new Date()
     );
     this.eventsToday = eventsToday;
-    this.whichClubToGo(this.eventsToday[0].location);
+    if (this.eventsToday.length > 0) {
+      this.whichClubToGo(this.eventsToday[0].location);
+    }
   }
 
   moveTo(n: number): void {
@@ -173,6 +178,3 @@ export default class index extends Vue {
   }
 }
 </script>
-
-<style scoped lang='postcss'>
-</style>
